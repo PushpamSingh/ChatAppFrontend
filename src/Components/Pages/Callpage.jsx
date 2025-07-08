@@ -37,9 +37,13 @@ const Callpage = () => {
 
   useEffect(()=>{
    const initCall=async()=>{
-       if(!(TokenData || authUserData )) return ;
+       if(!(TokenData || authUserData )){
+        console.log("TokenData or authUserData not available",TokenData);
+        
+        return ;
+       } 
     try {
-     console.log("Initializing Stream Video chat....");
+     console.log("Initializing Stream Video chat....",TokenData);
      const user={
       id:authUserData?._id,
       name:authUserData?.fullname,
