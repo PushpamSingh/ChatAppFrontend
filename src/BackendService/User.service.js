@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-    baseURL: "/api/v1/user",
+    baseURL: `${import.meta.env.VITE_BACKEND_API_URL}/api/v1/user`,
     withCredentials: true
 }); 
 class UserService {

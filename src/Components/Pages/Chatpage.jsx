@@ -83,7 +83,7 @@ const Chatpage = () => {
 
   const handleVideocall=()=>{
       if(Chatchannel){
-        const callUrl=`${window.location.origin}/#/call/${Chatchannel.id}`
+        const callUrl=`${window.location.origin}/call/${Chatchannel.id}`
 
           Chatchannel.sendMessage({
             text:`i have started a video call, join me here ${callUrl}`
