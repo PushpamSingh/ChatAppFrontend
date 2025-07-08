@@ -3,12 +3,14 @@ import { useAuthUser } from "../../Hooks/useAuthUser";
 import { BellIcon, HomeIcon, ShipWheelIcon, UsersIcon } from "lucide-react";
 import { Link } from "react-router-dom";
 import {useThemeStore} from "./../../Store/useThemeStore";
+import { useMenuClass } from "../../Store/useMenuClass";
 
 export const SideBar = () => {
   const { authUserData } = useAuthUser();
   const location = useLocation();
   const currentPath = location.pathname;
   const {theme}=useThemeStore()
+  const {menuClass,setMenuClass}=useMenuClass()
 
   const authStatus=Boolean(authUserData)
   // console.log("Auth Status: ",authStatus)
@@ -46,18 +48,19 @@ export const SideBar = () => {
     }
   ]
   return (
-    <aside className="w-64 bg-base-200 border-r border-base-300 hidden lg:flex flex-col h-screen sticky top-0" data-theme={theme}>
+    <aside className={`w-64 bg-base-200 border-r border-base-300 z-10 absolute ${menuClass ? "block" : "hidden"} sm:flex flex-col h-screen sm:sticky top-0`} data-theme={theme}>
       <div className="p-5 border-b border-base-300">
         <Link to="/" className="flex items-center gap-2.5">
           <ShipWheelIcon className="size-9 text-primary" />
           <span className="text-3xl font-bold font-mono bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary  tracking-wider">
-            Streamify
+            BridgeChat
           </span>
         </Link>
         <nav className="flex-1 p-4 space-y-1">
           {
             navItem.map((curr)=>{
                 return curr.active ?(<Link
+                onClick={()=>setMenuClass(!menuClass)}
                 key={curr?.slug}
             to={curr?.slug}
             className={`btn btn-ghost justify-start w-full gap-3 px-3 normal-case ${

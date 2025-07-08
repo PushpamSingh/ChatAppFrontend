@@ -8,12 +8,12 @@ import { Link } from "react-router-dom";
 import { UsersIcon } from "lucide-react";
 import { NoUserFound } from "../NoUserFound";
 import { FriendCard } from "../FriendCard";
-import { useChatClient } from "../../Store/useChatClient";
+// import { useChatClient } from "../../Store/useMenuClass";
 
 const Homepage = () => {
   const [outgoingfriendReqID, setOutGoingfriendReqID] = useState(new Set());
   const queryClient = useQueryClient();
-  const {globalChatwatcher}=useChatClient()
+  // const {globalChatwatcher}=useChatClient()
   // console.log("chat watcher: ",globalChatwatcher);
   
   

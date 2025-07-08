@@ -12,6 +12,7 @@ import Chatpage from "./Components/Pages/Chatpage";
 import Layout from "./Components/Layout/Layout";
 import { useAuthUser } from "./Hooks/useAuthUser";
 import { PageLoader } from "./Components/PageLoader";
+import FriendsPage from "./Components/Pages/FriendsPage";
 function App() {
   // const navigate=useNavigate();
   // const dispatch=useDispatch();
@@ -129,6 +130,12 @@ if(isLoading) return <PageLoader/>
             path="/chat/:id"
             element={
               isAuthenticated && isOnBoarded ? <Chatpage />: <Navigate to={!isAuthenticated ? "/login" : "/onboarding"} />
+            }
+          />
+          <Route
+            path="/friends"
+            element={
+              isAuthenticated && isOnBoarded ? <FriendsPage />: <Navigate to={!isAuthenticated ? "/login" : "/onboarding"} />
             }
           />
 

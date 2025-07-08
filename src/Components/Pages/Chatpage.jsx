@@ -15,7 +15,7 @@ import {
   Thread,
   Window,
 } from "stream-chat-react";
-import { useChatClient } from "../../Store/useChatClient";
+// import { useChatClient } from "../../Store/useMenuClass";
 import { CallButton } from "../CallButton";
 
 const Chatpage = () => {
@@ -26,7 +26,7 @@ const Chatpage = () => {
   const { authUserData } = useAuthUser();
   const { id: targetId } = useParams();
   const Stream_Api_Key = import.meta.env.VITE_STREAMING_API_KEY;
-  const {globalChatwatcher,setglobalChatwatcher}=useChatClient()
+  // const {globalChatwatcher,setglobalChatwatcher}=useChatClient()
 
   const { data: TokenData } = useQuery({
     queryKey: ["streamToken"],
@@ -43,7 +43,7 @@ const Chatpage = () => {
       try {
         console.log("Initializing Stream Chat....");
         const client = StreamChat.getInstance(Stream_Api_Key);
-        setglobalChatwatcher(client)
+        // setglobalChatwatcher(client)
           await client.connectUser(
           {
             id: authUserData._id,
@@ -90,7 +90,7 @@ const Chatpage = () => {
           })
       }
 
-      console.log("Clicked button");
+      // console.log("Clicked button");
       
       
   }
