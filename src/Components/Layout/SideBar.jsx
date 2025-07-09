@@ -48,7 +48,7 @@ export const SideBar = () => {
     }
   ]
   return (
-    <aside className={`w-64 bg-base-200 border-r border-base-300 z-10 absolute ${menuClass ? "block" : "hidden"} sm:flex flex-col h-screen sm:sticky top-0`} data-theme={theme}>
+    <aside className={`w-64 bg-base-200 border-r border-base-300 z-10 sticky ${menuClass ? "block" : "hidden"} sm:flex flex-col h-screen sm:sticky top-0`} data-theme={theme}>
       <div className="p-5 border-b border-base-300">
         <Link to="/" className="flex items-center gap-2.5">
           <ShipWheelIcon className="size-9 text-primary" />

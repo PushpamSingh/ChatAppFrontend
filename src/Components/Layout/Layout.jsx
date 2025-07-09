@@ -9,7 +9,7 @@ const Layout = () => {
   const {theme} = useThemeStore()
   return (
      <div className="min-h-screen relative" data-theme={theme}>
-      <div className="flex absolute top-0 left-0 right-0 z-20">
+      <div className="flex relative">
       <SideBar/>
       <div className="flex-1 flex flex-col">
       <NavBar/>
