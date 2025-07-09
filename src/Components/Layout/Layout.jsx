@@ -8,8 +8,8 @@ import {useThemeStore} from "./../../Store/useThemeStore";
 const Layout = () => {
   const {theme} = useThemeStore()
   return (
-     <div className="min-h-screen" data-theme={theme}>
-      <div className="flex relative">
+     <div className="min-h-screen relative" data-theme={theme}>
+      <div className="flex absolute top-0 left-0 right-0 z-20">
       <SideBar/>
       <div className="flex-1 flex flex-col">
       <NavBar/>
