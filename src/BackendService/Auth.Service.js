@@ -57,7 +57,7 @@ class AuthService {
      }
     async logoutUser(){
         try {
-            const response = await API.post("/logout",{headers: { Authorization: `Bearer ${token}` }});
+            const response = await API.post("/logout",{headers: { Authorization: `Bearer ` }});
             // console.log("Helo",response);
               if(response){
                 localStorage.setItem("accessToken",null)
