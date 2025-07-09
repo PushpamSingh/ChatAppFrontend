@@ -58,7 +58,13 @@ class AuthService {
         try {
             const response = await API.post("/logout");
             // console.log("Helo",response);
-            return response?.data || null;
+              if(response){
+                localStorage.setItem("accessToken",null)
+                localStorage.setItem("refreshToken",null)
+                return response.data;
+            }else{
+                return null;
+            }
         } catch (error) {
             // console.log("error:",error);
             return null
