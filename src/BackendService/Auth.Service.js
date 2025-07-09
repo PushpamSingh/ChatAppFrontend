@@ -25,8 +25,16 @@ class AuthService {
         try {
             const response = await API.post("/login", {email, password});
             // console.log("Response: ",response);
+            if(response){
+                const {accessToken,refreshToken}=response.data?.data
+                localStorage.setItem("accessToken",accessToken)
+                localStorage.setItem("refreshToken",refreshToken)
+                API.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
+                return response.data;
+            }else{
+                return null;
+            }
             
-            return response.data;
         } catch (error) {
             // console.log("Error in login: ",error);
             
