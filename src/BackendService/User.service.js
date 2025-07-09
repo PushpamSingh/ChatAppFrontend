@@ -4,10 +4,11 @@ const API = axios.create({
     baseURL: `${import.meta.env.VITE_BACKEND_API_URL}/api/v1/user`,
     withCredentials: true
 }); 
+const token = localStorage.getItem("accessToken") || null;
 class UserService {
     async getRecommendedUsers() {
         try {
-            const response = await API.get("/getrecommendedusers");
+            const response = await API.get("/getrecommendedusers",{headers: { Authorization: `Bearer ${token}` }});
             if(response.data){
                 return response.data;
             }else{
@@ -20,7 +21,7 @@ class UserService {
 
     async getMyFriends() {
         try {
-            const response = await API.get("/getmyfriends");
+            const response = await API.get("/getmyfriends",{headers: { Authorization: `Bearer ${token}` }});
            if(response.data){
                 return response.data;
             }else{
@@ -33,7 +34,7 @@ class UserService {
 
     async sendFriendRequest(id) {
         try {
-            const response = await API.post(`/sendfriendrequest/${id}`);
+            const response = await API.post(`/sendfriendrequest/${id}`,{headers: { Authorization: `Bearer ${token}` }});
            if(response.data){
                 return response.data;
             }else{
@@ -46,7 +47,7 @@ class UserService {
 
     async acceptFriendRequest(id) {
         try {
-            const response = await API.put(`/acceptfriendrequest/${id}`);
+            const response = await API.put(`/acceptfriendrequest/${id}`,{headers: { Authorization: `Bearer ${token}` }});
             if(response.data){
                 return response.data;
             }else{
@@ -59,7 +60,7 @@ class UserService {
 
     async getFriendRequest() {
         try {
-            const response = await API.get("/getfriendrequest");
+            const response = await API.get("/getfriendrequest",{headers: { Authorization: `Bearer ${token}` }});
            if(response.data){
                 return response.data;
             }else{
@@ -72,7 +73,7 @@ class UserService {
 
     async getOutgoingFriendRequest() {
         try {
-            const response = await API.get("/getoutgoingfriendrequest");
+            const response = await API.get("/getoutgoingfriendrequest",{headers: { Authorization: `Bearer ${token}` }});
             if(response.data){
                 return response.data;
             }else{

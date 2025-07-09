@@ -3,11 +3,12 @@ const API = axios.create({
     baseURL: `${import.meta.env.VITE_BACKEND_API_URL}/api/v1/chat`,
     withCredentials: true
 });
+const token = localStorage.getItem("accessToken") || null;
 
 class ChatService {
     async genStreamToken() {
         try {
-            const response = await API.get("/genstreamtoken");
+            const response = await API.get("/genstreamtoken",{headers: { Authorization: `Bearer ${token}` }});
             if (response.data) {
                 return response.data;
             } else {

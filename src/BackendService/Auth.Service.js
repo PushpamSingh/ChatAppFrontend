@@ -4,6 +4,7 @@ const API=axios.create({
     baseURL: `${import.meta.env.VITE_BACKEND_API_URL}/api/v1/auth`,
     withCredentials:true
 })
+const token = localStorage.getItem("accessToken") || null;
 
 class AuthService {
     async createUser({fullname, email, password}){
@@ -44,7 +45,7 @@ class AuthService {
 
     async onboardUser({fullname, bio, nativeLanguage, learningLanguage, location,profilePic}){
         try {
-            const response = await API.post("/onboard", {fullname, bio, nativeLanguage, learningLanguage, location,profilePic});
+            const response = await API.post("/onboard", {fullname, bio, nativeLanguage, learningLanguage, location,profilePic},{headers: { Authorization: `Bearer ${token}` }});
             if(response.data){  
             return response.data;
             }else{
@@ -56,7 +57,7 @@ class AuthService {
      }
     async logoutUser(){
         try {
-            const response = await API.post("/logout");
+            const response = await API.post("/logout",{headers: { Authorization: `Bearer ${token}` }});
             // console.log("Helo",response);
               if(response){
                 localStorage.setItem("accessToken",null)
@@ -74,7 +75,7 @@ class AuthService {
 
     async getUserDetails(){
         try {
-            const response = await API.get("/getcurrentuser");
+            const response = await API.get("/getcurrentuser",{headers: { Authorization: `Bearer ${token}` }});
             // console.log("Getcurrent user not null: ",response.data);
             if(response){
                 // console.log("Getcurrent user not null: ",response.data);
