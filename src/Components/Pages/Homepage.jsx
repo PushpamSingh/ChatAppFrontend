@@ -29,7 +29,7 @@ const Homepage = () => {
     },
   });
 
-  const { data: RecommendedFriends, isLoading: recommendedLoading } = useQuery({
+  const { data: RecommendedFriends=[], isLoading: recommendedLoading } = useQuery({
     queryKey: ["recommendedUser"],
     queryFn: async () => {
       const response = await userService.getRecommendedUsers();
@@ -37,7 +37,7 @@ const Homepage = () => {
     },
   });
 
-  const { data: outgoingReqData, isLoading: outgoingLoading } = useQuery({
+  const { data: outgoingReqData=[], isLoading: outgoingLoading } = useQuery({
     queryKey: ["outgoingReq"],
     queryFn: async () => {
       const response = await userService.getOutgoingFriendRequest();
